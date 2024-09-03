@@ -226,7 +226,7 @@ jobs:
           git fetch --tags --force
           ./easybuild.sh build -32
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           path: build/legacy
 
@@ -285,7 +285,7 @@ jobs:
           git fetch --tags --force
           ./easybuild.sh build -64
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: All-mods
           path: build/legacy
@@ -329,7 +329,7 @@ jobs:
           git fetch --tags --force
           ./easybuild.sh build -64 --osx=10.10
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: All-mods
           path: build/legacy
@@ -364,7 +364,7 @@ jobs:
           git fetch --tags --force
           call .\easybuild.bat build
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: All-mods
           path: build/legacy
@@ -417,7 +417,7 @@ jobs:
           repository: rafal1137/NDK_ETL
           path: NDK_ETL
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: All-mods
           path: app/src/main/assets
@@ -484,7 +484,7 @@ jobs:
         run: |
           echo ::set-output name=hash_exists::$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.LEGACY_UPLOAD_CHECK_URL }}${{ github.sha }} 2>/dev/null)
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         if: ${{ steps.vars.outputs.hash_exists == '404' }}
         with:
           path: packages
@@ -517,7 +517,7 @@ jobs:
         with:
           submodules: false
           fetch-depth: 0
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: lnx64-packages
           path: build/package
